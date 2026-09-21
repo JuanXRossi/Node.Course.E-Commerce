@@ -1,5 +1,5 @@
-const express = require("express");
-const { Category } = require("../models/category.model");
+import express from "express";
+import { Category } from "../models/category.model.js";
 
 const router = express.Router();
 
@@ -48,9 +48,9 @@ router.delete("/:id", async (req, res) => {
 });
 
 router.put("/:id", async (req, res) => {
-    try {
+  try {
     const category = await Category.findByIdAndUpdate(req.params.id, {
-        name: req.body.name
+      name: req.body.name,
     });
 
     if (!category) {
@@ -61,6 +61,6 @@ router.put("/:id", async (req, res) => {
   } catch (error) {
     return res.status(400).send({ message: error.message });
   }
-})
+});
 
-module.exports = router;
+export default router;

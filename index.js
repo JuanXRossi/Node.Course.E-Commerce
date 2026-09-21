@@ -1,13 +1,15 @@
-const express = require("express");
-const i18next = require("i18next");
-const backend = require("i18next-fs-backend");
-const middleware = require("i18next-http-middleware");
-const mongoose = require("mongoose");
-require("dotenv").config();
-const cors = require("cors");
-const morgan = require("morgan")
+import express from "express";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+import i18next from "i18next";
+import backend from "i18next-fs-backend";
+import middleware from "i18next-http-middleware";
+import cors from "cors";
+import morgan from "morgan";
 
-const categoryRouter = require("./routes/category.route");
+import categoryRouter from "./routes/category.route.js";
+
+dotenv.config();
 
 i18next
   .use(backend)
@@ -20,7 +22,7 @@ const api = process.env.API;
 
 app.use(middleware.handle(i18next));
 app.use(express.json());
-app.use(morgan("tiny"))
+app.use(morgan("tiny"));
 app.use(
   cors({
     origin: ["http://localhost:3000", "https://mydomain.com"],
