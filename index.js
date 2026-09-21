@@ -5,6 +5,7 @@ const middleware = require("i18next-http-middleware");
 const mongoose = require("mongoose");
 require("dotenv").config();
 const cors = require("cors");
+const morgan = require("morgan")
 
 const categoryRouter = require("./routes/category.route");
 
@@ -19,6 +20,7 @@ const api = process.env.API;
 
 app.use(middleware.handle(i18next));
 app.use(express.json());
+app.use(morgan("tiny"))
 app.use(
   cors({
     origin: ["http://localhost:3000", "https://mydomain.com"],
