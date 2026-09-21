@@ -6,6 +6,8 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 const cors = require("cors");
 
+const categoryRouter = require("./routes/category.route");
+
 i18next
   .use(backend)
   .use(middleware.LanguageDetector)
@@ -16,12 +18,17 @@ const port = process.env.PORT;
 const api = process.env.API;
 
 app.use(middleware.handle(i18next));
-app.use(cors({
+app.use(express.json());
+app.use(
+  cors({
     origin: ["http://localhost:3000", "https://mydomain.com"],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     credentials: true,
-    allowedHeaders: ["Content-Type", "Authorization", "Accept-Language"]
-}));
+    allowedHeaders: ["Content-Type", "Authorization", "Accept-Language"],
+  }),
+);
+
+app.use(`${api}/categories`, categoryRouter);
 
 app.get(`${api}/health`, (req, res) => {
   res.send(req.t("validationFailed"));
