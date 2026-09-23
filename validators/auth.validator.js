@@ -40,6 +40,34 @@ export const loginValidation = [
     .withMessage((value, { req }) => req.t("passwordMinLength"))
 ]
 
+export const updateProfileValidation = [
+  body("email")
+    .optional()
+    .isEmail()
+    .withMessage((value, { req }) => req.t("enterValidEmail")),
+  body("password")
+    .optional()
+    .isLength({ min: 6 })
+    .withMessage((value, { req }) => req.t("passwordMinLength")),
+  body("role")
+    .optional()
+    .isIn(["admin", "user"])
+    .withMessage((value, { req }) => req.t("invalidRole")),
+  body("userName")
+    .optional(),
+  body("city")
+    .optional(),
+  body("postalCode")
+    .optional(),
+  body("addressLine1")
+    .optional(),
+  body("addressLine2").optional(),
+  body("phoneNumber")
+    .optional()
+    .matches(/^\+?[0-9]{10,15}$/)
+    .withMessage((value, { req }) => req.t("invalidPhoneNumber")),
+]
+
 export const handleValidationErrors = (req, res, next) => {
   const errors = validationResult(req);
 

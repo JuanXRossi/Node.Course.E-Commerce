@@ -4,6 +4,7 @@ import {
   handleValidationErrors,
   loginValidation,
   registerValidation,
+  updateProfileValidation,
 } from "../validators/auth.validator.js";
 import { generateToken } from "../helpers/jwt.js";
 import { handleRouteError } from "../helpers/error-handling.js";
@@ -77,6 +78,75 @@ router.post(
           user: userData.toJSON(),
           token: token,
         },
+      });
+    } catch (error) {
+      handleRouteError(error, res);
+    }
+  },
+);
+
+router.get("/profile", async (req, res) => {
+  try {
+    const user = await User.findById(req.auth.id).select("-password");
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: req.t("userNotFound"),
+      });
+    }
+
+    res.json({
+      success: true,
+      data: user,
+    });
+  } catch (error) {
+    handleRouteError(error, res);
+  }
+});
+
+router.put(
+  "/profile",
+  updateProfileValidation,
+  handleValidationErrors,
+  async (req, res) => {
+    try {
+      const userId = req.auth.id;
+      const updateBody = req.body;
+
+      if (updateBody.email) {
+        const existingUserByEmail = await User.findOne({
+          email: updateBody.email,
+          _id: { $ne: userId },
+        });
+
+        if (existingUserByEmail) {
+          return res.status(400).json({
+            success: false,
+            message: req.t("emailAlreadyExists"),
+          });
+        }
+      }
+
+      const user = await User.findById(userId);
+
+      if (!user) {
+        return res.status(404).json({
+          success: false,
+          message: req.t("userNotFound"),
+        });
+      }
+
+      Object.keys(updateBody).forEach((key) => {
+        user[key] = updateBody[key];
+      });
+
+      await user.save();
+
+      res.json({
+        success: true,
+        message: req.t("profileUpdatedSuccessfully"),
+        data: user,
       });
     } catch (error) {
       handleRouteError(error, res);
