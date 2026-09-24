@@ -53,13 +53,55 @@ router.post(
 
 router.get("/", userAndAdmin, async (req, res) => {
   try {
-    const productsList = await ProductModel.find().populate("category", "name");
+    const search = req.query.search;
+    const categoryID = req.query.categoryID;
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const skip = (page - 1) * limit;
 
-    if (!productsList || productsList.length === 0) {
-      return res.send({ message: req.t("noProducts") });
+    const filter = {};
+
+    if (search) {
+      filter.$or = [
+        { title: { $regex: search, $options: "i" } },
+        { description: { $regex: search, $options: "i" } },
+      ];
     }
 
-    res.send(productsList);
+    if (categoryID) {
+      filter.category = categoryID;
+    }
+
+    const totalCount = await ProductModel.countDocuments(filter);
+
+    const productsList = await ProductModel.find(filter)
+      .populate("category", "name")
+      .skip(skip)
+      .limit(limit);
+
+    const sharedDataResponse = {
+      search,
+      categoryID,
+      page,
+      limit,
+      totalProducts: totalCount,
+      totalPages: Math.ceil(totalCount / limit),
+      hasNextPage: page < Math.ceil(totalCount / limit),
+      hasPrevPage: page > 1,
+    };
+
+    if (!productsList || productsList.length === 0) {
+      return res.send({
+        message: req.t("noProducts"),
+        data: [],
+        ...sharedDataResponse,
+      });
+    }
+
+    res.send({
+      data: productsList,
+      ...sharedDataResponse,
+    });
   } catch (error) {
     return res.status(400).send({ message: error.message });
   }
