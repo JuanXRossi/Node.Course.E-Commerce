@@ -10,6 +10,7 @@ import { adminOnly, userAndAdmin } from "../middleware/roles.middleware.js";
 import {
   createProductValidation,
   handleValidationErrors,
+  updateProductValidation,
 } from "../validators/product.validator.js";
 
 const router = express.Router();
@@ -75,7 +76,7 @@ router.get("/", userAndAdmin, async (req, res) => {
     const totalCount = await ProductModel.countDocuments(filter);
 
     const productsList = await ProductModel.find(filter)
-      .populate("category", "name")
+      .populate("category")
       .skip(skip)
       .limit(limit);
 
@@ -106,5 +107,99 @@ router.get("/", userAndAdmin, async (req, res) => {
     return res.status(400).send({ message: error.message });
   }
 });
+
+router.get("/:id", async (req, res) => {
+  try {
+    const product = await ProductModel.findByIdAndUpdate(
+      req.params.id,
+      { $inc: { views: 1 } },
+      { new: true },
+    ).populate("category");
+
+    if (!product) {
+      return res.status(404).send({ message: req.t("productNotFound") });
+    }
+
+    return res.send(product);
+  } catch (error) {
+    handleRouteError(error, res);
+  }
+});
+
+router.delete("/:id", adminOnly, async (req, res) => {
+  try {
+    const product = await ProductModel.findByIdAndDelete(req.params.id);
+
+    if (!product) {
+      return res.status(404).send({ message: req.t("productNotFound") });
+    }
+
+    return res.send({ message: req.t("productDeletedSuccessfully") });
+  } catch (error) {
+    handleRouteError(error, res);
+  }
+});
+
+router.put(
+  "/:id",
+  adminOnly,
+  uploadMultiple,
+  handleUploadError,
+  updateProductValidation,
+  handleValidationErrors,
+  async (req, res) => {
+    try {
+      const existingProduct = await ProductModel.findById(req.params.id);
+
+      if (!existingProduct) {
+        return res.status(404).json({
+          success: false,
+          message: req.t("productNotFound"),
+        });
+      }
+
+      const updateData = {};
+
+      if (req.body.title !== undefined) updateData.title = req.body.title;
+      if (req.body.price !== undefined)
+        updateData.price = parseFloat(req.body.price);
+      if (req.body.category !== undefined)
+        updateData.category = req.body.category;
+      if (req.body.countInStock !== undefined)
+        updateData.countInStock = parseInt(req.body.countInStock);
+      if (req.body.description !== undefined)
+        updateData.description = req.body.description;
+
+      if (req.files && req.files.length > 0) {
+        const imageURLs = req.files.map((file) =>
+          getFileURL(req, file.filename),
+        );
+
+        if (req.body.replaceImages === "true") {
+          updateData.images = imageURLs;
+        } else {
+          updateData.images = [...existingProduct.images, ...imageURLs];
+        }
+      }
+
+      const updatedProduct = await ProductModel.findByIdAndUpdate(
+        req.params.id,
+        updateData,
+        {
+          new: true,
+          runValidators: true,
+        },
+      ).populate("category");
+
+      return res.status(200).json({
+        success: true,
+        message: req.t("productUpdatedSuccessfully"),
+        data: updatedProduct,
+      });
+    } catch (error) {
+      handleRouteError(error, res);
+    }
+  },
+);
 
 export default router;

@@ -34,6 +34,31 @@ export const createProductValidation = [
     .withMessage((value, { req }) => req.t("ratingCountPositive")),
 ];
 
+export const updateProductValidation = [
+  body("title")
+    .optional()
+    .isLength({ min: 2, max: 10 })
+    .withMessage((value, { req }) => req.t("productTitleLength"))
+    .trim(),
+  body("category")
+    .optional()
+    .isMongoId()
+    .withMessage((value, { req }) => req.t("invalidCategoryId")),
+  body("price")
+    .optional()
+    .isFloat({ min: 0 })
+    .withMessage((value, { req }) => req.t("pricePositive")),
+  body("description")
+    .optional()
+    .isLength({ min: 5, max: 1000 })
+    .withMessage((value, { req }) => req.t("descriptionLength"))
+    .trim(),
+  body("countInStock")
+    .optional()
+    .isInt({ min: 0, max: 99999 })
+    .withMessage((value, { req }) => req.t("stockCountRange")),
+];
+
 export const handleValidationErrors = (req, res, next) => {
   const errors = validationResult(req);
 
