@@ -1,0 +1,68 @@
+import express from "express";
+import { ProductModel } from "../models/product.model.js";
+import { handleRouteError } from "../helpers/error-handling.js";
+import {
+  getFileURL,
+  handleUploadError,
+  uploadMultiple,
+} from "../middleware/upload.middleware.js";
+import { adminOnly, userAndAdmin } from "../middleware/roles.middleware.js";
+import {
+  createProductValidation,
+  handleValidationErrors,
+} from "../validators/product.validator.js";
+
+const router = express.Router();
+
+router.post(
+  "/",
+  adminOnly,
+  uploadMultiple,
+  handleUploadError,
+  createProductValidation,
+  handleValidationErrors,
+  async (req, res) => {
+    try {
+      let imageURLs = [];
+
+      if (req.files && req.files.length > 0) {
+        imageURLs = req.files.map((file) => getFileURL(req, file.filename));
+      }
+
+      let newProduct = new ProductModel({
+        title: req.body.title,
+        price: parseFloat(req.body.price),
+        category: req.body.category,
+        countInStock: parseInt(req.body.countInStock),
+        description: req.body.description,
+        images: imageURLs,
+      });
+
+      newProduct = await newProduct.save();
+
+      return res.status(201).json({
+        success: true,
+        message: req.t("productCreatedSuccessfully"),
+        data: newProduct,
+      });
+    } catch (error) {
+      handleRouteError(error);
+    }
+  },
+);
+
+router.get("/", userAndAdmin, async (req, res) => {
+  try {
+    const productsList = await ProductModel.find().populate("category", "name");
+
+    if (!productsList || productsList.length === 0) {
+      return res.send({ message: req.t("noProducts") });
+    }
+
+    res.send(productsList);
+  } catch (error) {
+    return res.status(400).send({ message: error.message });
+  }
+});
+
+export default router;
