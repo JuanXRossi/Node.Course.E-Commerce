@@ -43,5 +43,39 @@
   "userCreatedSuccessfully": "उपयोगकर्ता सफलतापूर्वक बनाया गया",
   "userUpdatedSuccessfully": "उपयोगकर्ता सफलतापूर्वक अपडेट किया गया",
   "serverError": "आंतरिक सर्वर त्रुटि",
-  "testing": "अनुवाद परीक्षण काम कर रहा है!"
+  "testing": "अनुवाद परीक्षण काम कर रहा है!",
+
+  "categoryNameValidation": "श्रेणी का नाम कम से कम 3 अक्षरों का होना चाहिए।",
+  "enterValidEmail": "कृपया एक मान्य ईमेल पता दर्ज करें।",
+  "passwordMinLength": "पासवर्ड कम से कम 6 अक्षरों का होना चाहिए।",
+  "invalidRole": "भूमिका admin या user होनी चाहिए।",
+  "userNameRequired": "उपयोगकर्ता नाम आवश्यक है।",
+  "cityRequired": "शहर का नाम आवश्यक है।",
+  "postalCodeRequired": "पिन कोड आवश्यक है।",
+  "addressLine1Required": "पहला पता आवश्यक है।",
+  "phoneNumberRequired": "फ़ोन नंबर आवश्यक है।",
+  "invalidPhoneNumber": "अमान्य फ़ोन नंबर।",
+  "incorrectPassword": "पासवर्ड सही नहीं है।",
+
+  "accessTokenRequired": "एक्सेस टोकन आवश्यक है।",
+  "invalidOrExpiredToken": "एक्सेस टोकन अमान्य या समाप्त हो चुका है।",
+  "authenticationRequired": "प्रमाणीकरण आवश्यक है।",
+  "insufficientPermissions": "पर्याप्त अनुमतियाँ नहीं हैं।",
+
+  "onlyImagesAllowed": "केवल छवि फ़ाइलों की अनुमति है।",
+  "fileSizeLimit5MB": "फ़ाइल का आकार 5 MB से अधिक नहीं होना चाहिए।",
+  "fileCountLimit10Files": "आप अधिकतम 10 फ़ाइलें अपलोड कर सकते हैं।",
+  "unexpectedFile": "अनपेक्षित फ़ाइल।",
+  "uploadError": "फ़ाइल अपलोड करने में त्रुटि।",
+
+  "productTitleRequired": "उत्पाद का शीर्षक आवश्यक है।",
+  "productTitleLength": "उत्पाद का शीर्षक 2 से 10 अक्षरों के बीच होना चाहिए।",
+  "categoryRequired": "श्रेणी आवश्यक है।",
+  "invalidCategoryId": "अमान्य श्रेणी ID।",
+  "priceRequired": "कीमत आवश्यक है।",
+  "pricePositive": "कीमत एक धनात्मक संख्या होनी चाहिए।",
+  "descriptionRequired": "विवरण आवश्यक है।",
+  "descriptionLength": "विवरण 5 से 1000 अक्षरों के बीच होना चाहिए।",
+  "stockCountRange": "स्टॉक की मात्रा 0 से 99999 के बीच होनी चाहिए।",
+  "ratingCountPositive": "रेटिंग की संख्या एक धनात्मक पूर्णांक होनी चाहिए।"
 }

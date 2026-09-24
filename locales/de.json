@@ -43,6 +43,40 @@
   "userCreatedSuccessfully": "Benutzer erfolgreich erstellt",
   "userUpdatedSuccessfully": "Benutzer erfolgreich aktualisiert",
   "serverError": "Interner Serverfehler",
-  "testing": "Übersetzungstest funktioniert!"
+  "testing": "Übersetzungstest funktioniert!",
+
+  "categoryNameValidation": "Der Kategoriename muss mindestens 3 Zeichen lang sein.",
+  "enterValidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+  "passwordMinLength": "Das Passwort muss mindestens 6 Zeichen lang sein.",
+  "invalidRole": "Die Rolle muss entweder admin oder user sein.",
+  "userNameRequired": "Der Benutzername ist erforderlich.",
+  "cityRequired": "Der Stadtname ist erforderlich.",
+  "postalCodeRequired": "Die Postleitzahl ist erforderlich.",
+  "addressLine1Required": "Die erste Adresszeile ist erforderlich.",
+  "phoneNumberRequired": "Die Telefonnummer ist erforderlich.",
+  "invalidPhoneNumber": "Ungültige Telefonnummer.",
+  "incorrectPassword": "Das Passwort ist nicht korrekt.",
+
+  "accessTokenRequired": "Zugriffstoken ist erforderlich.",
+  "invalidOrExpiredToken": "Ungültiges oder abgelaufenes Zugriffstoken.",
+  "authenticationRequired": "Authentifizierung erforderlich.",
+  "insufficientPermissions": "Unzureichende Berechtigungen.",
+
+  "onlyImagesAllowed": "Es sind nur Bilddateien zulässig.",
+  "fileSizeLimit5MB": "Die Dateigröße darf 5 MB nicht überschreiten.",
+  "fileCountLimit10Files": "Sie können maximal 10 Dateien hochladen.",
+  "unexpectedFile": "Unerwartete Datei.",
+  "uploadError": "Fehler beim Hochladen der Datei.",
+
+  "productTitleRequired": "Der Produkttitel ist erforderlich.",
+  "productTitleLength": "Der Produkttitel muss zwischen 2 und 10 Zeichen lang sein.",
+  "categoryRequired": "Die Kategorie ist erforderlich.",
+  "invalidCategoryId": "Ungültige Kategorie-ID.",
+  "priceRequired": "Der Preis ist erforderlich.",
+  "pricePositive": "Der Preis muss eine positive Zahl sein.",
+  "descriptionRequired": "Die Beschreibung ist erforderlich.",
+  "descriptionLength": "Die Beschreibung muss zwischen 5 und 1000 Zeichen lang sein.",
+  "stockCountRange": "Die Lagerbestandsmenge muss zwischen 0 und 99999 liegen.",
+  "ratingCountPositive": "Die Anzahl der Bewertungen muss eine positive ganze Zahl sein."
 }
  

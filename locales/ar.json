@@ -43,5 +43,39 @@
   "userCreatedSuccessfully": "تم إنشاء المستخدم بنجاح",
   "userUpdatedSuccessfully": "تم تحديث المستخدم بنجاح",
   "serverError": "خطأ داخلي في الخادم",
-  "testing": "اختبار الترجمة يعمل!"
+  "testing": "اختبار الترجمة يعمل!",
+  
+  "categoryNameValidation": "يجب أن يتكون اسم الفئة من 3 أحرف على الأقل.",
+  "enterValidEmail": "يرجى إدخال بريد إلكتروني صالح.",
+  "passwordMinLength": "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل.",
+  "invalidRole": "يجب أن يكون الدور إما admin أو user.",
+  "userNameRequired": "اسم المستخدم مطلوب.",
+  "cityRequired": "اسم المدينة مطلوب.",
+  "postalCodeRequired": "الرمز البريدي مطلوب.",
+  "addressLine1Required": "العنوان الأول مطلوب.",
+  "phoneNumberRequired": "رقم الهاتف مطلوب.",
+  "invalidPhoneNumber": "رقم الهاتف غير صالح.",
+  "incorrectPassword": "كلمة المرور غير صحيحة.",
+
+  "accessTokenRequired": "رمز الوصول مطلوب.",
+  "invalidOrExpiredToken": "رمز الوصول غير صالح أو منتهي الصلاحية.",
+  "authenticationRequired": "المصادقة مطلوبة.",
+  "insufficientPermissions": "الأذونات غير كافية.",
+
+  "onlyImagesAllowed": "يُسمح بملفات الصور فقط.",
+  "fileSizeLimit5MB": "يجب ألا يتجاوز حجم الملف 5 ميجابايت.",
+  "fileCountLimit10Files": "يمكنك تحميل 10 ملفات كحد أقصى.",
+  "unexpectedFile": "ملف غير متوقع.",
+  "uploadError": "حدث خطأ أثناء تحميل الملف.",
+
+  "productTitleRequired": "عنوان المنتج مطلوب.",
+  "productTitleLength": "يجب أن يتراوح عنوان المنتج بين حرفين و10 أحرف.",
+  "categoryRequired": "الفئة مطلوبة.",
+  "invalidCategoryId": "معرّف الفئة غير صالح.",
+  "priceRequired": "السعر مطلوب.",
+  "pricePositive": "يجب أن يكون السعر رقمًا موجبًا.",
+  "descriptionRequired": "الوصف مطلوب.",
+  "descriptionLength": "يجب أن يتراوح الوصف بين 5 و1000 حرف.",
+  "stockCountRange": "يجب أن يتراوح عدد المنتجات في المخزون بين 0 و99999.",
+  "ratingCountPositive": "يجب أن يكون عدد التقييمات عددًا صحيحًا موجبًا."
 }

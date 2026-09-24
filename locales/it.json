@@ -43,5 +43,39 @@
   "userCreatedSuccessfully": "Utente creato con successo",
   "userUpdatedSuccessfully": "Utente aggiornato con successo",
   "serverError": "Errore interno del server",
-  "testing": "Il test di traduzione funziona!"
+  "testing": "Il test di traduzione funziona!",
+
+  "categoryNameValidation": "Il nome della categoria deve contenere almeno 3 caratteri.",
+  "enterValidEmail": "Inserisci un indirizzo email valido.",
+  "passwordMinLength": "La password deve contenere almeno 6 caratteri.",
+  "invalidRole": "Il ruolo deve essere admin o user.",
+  "userNameRequired": "Il nome utente è obbligatorio.",
+  "cityRequired": "Il nome della città è obbligatorio.",
+  "postalCodeRequired": "Il codice postale è obbligatorio.",
+  "addressLine1Required": "Il primo indirizzo è obbligatorio.",
+  "phoneNumberRequired": "Il numero di telefono è obbligatorio.",
+  "invalidPhoneNumber": "Numero di telefono non valido.",
+  "incorrectPassword": "La password non è corretta.",
+
+  "accessTokenRequired": "Il token di accesso è obbligatorio.",
+  "invalidOrExpiredToken": "Token di accesso non valido o scaduto.",
+  "authenticationRequired": "Autenticazione richiesta.",
+  "insufficientPermissions": "Permessi insufficienti.",
+
+  "onlyImagesAllowed": "Sono consentiti solo file immagine.",
+  "fileSizeLimit5MB": "La dimensione del file non può superare 5 MB.",
+  "fileCountLimit10Files": "Puoi caricare un massimo di 10 file.",
+  "unexpectedFile": "File imprevisto.",
+  "uploadError": "Errore durante il caricamento del file.",
+
+  "productTitleRequired": "Il titolo del prodotto è obbligatorio.",
+  "productTitleLength": "Il titolo del prodotto deve contenere da 2 a 10 caratteri.",
+  "categoryRequired": "La categoria è obbligatoria.",
+  "invalidCategoryId": "ID categoria non valido.",
+  "priceRequired": "Il prezzo è obbligatorio.",
+  "pricePositive": "Il prezzo deve essere un numero positivo.",
+  "descriptionRequired": "La descrizione è obbligatoria.",
+  "descriptionLength": "La descrizione deve contenere da 5 a 1000 caratteri.",
+  "stockCountRange": "La quantità disponibile deve essere compresa tra 0 e 99999.",
+  "ratingCountPositive": "Il numero di valutazioni deve essere un numero intero positivo."
 }

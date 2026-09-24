@@ -43,5 +43,39 @@
   "userCreatedSuccessfully": "Usuario creado exitosamente",
   "userUpdatedSuccessfully": "Usuario actualizado exitosamente",
   "serverError": "Error interno del servidor",
-  "testing": "¡La prueba de traducción funciona!"
+  "testing": "¡La prueba de traducción funciona!",
+
+  "categoryNameValidation": "El nombre de la categoría debe tener al menos 3 caracteres.",
+  "enterValidEmail": "Ingrese una dirección de correo electrónico válida.",
+  "passwordMinLength": "La contraseña debe tener al menos 6 caracteres.",
+  "invalidRole": "El rol debe ser admin o user.",
+  "userNameRequired": "El nombre de usuario es obligatorio.",
+  "cityRequired": "El nombre de la ciudad es obligatorio.",
+  "postalCodeRequired": "El código postal es obligatorio.",
+  "addressLine1Required": "La primera dirección es obligatoria.",
+  "phoneNumberRequired": "El número de teléfono es obligatorio.",
+  "invalidPhoneNumber": "Número de teléfono no válido.",
+  "incorrectPassword": "La contraseña no es correcta.",
+
+  "accessTokenRequired": "El token de acceso es obligatorio.",
+  "invalidOrExpiredToken": "El token de acceso no es válido o ha expirado.",
+  "authenticationRequired": "La autenticación es obligatoria.",
+  "insufficientPermissions": "Permisos insuficientes.",
+
+  "onlyImagesAllowed": "Solo se permiten archivos de imagen.",
+  "fileSizeLimit5MB": "El tamaño del archivo no puede superar los 5 MB.",
+  "fileCountLimit10Files": "Puede cargar un máximo de 10 archivos.",
+  "unexpectedFile": "Archivo inesperado.",
+  "uploadError": "Error al cargar el archivo.",
+
+  "productTitleRequired": "El título del producto es obligatorio.",
+  "productTitleLength": "El título del producto debe tener entre 2 y 10 caracteres.",
+  "categoryRequired": "La categoría es obligatoria.",
+  "invalidCategoryId": "ID de categoría no válido.",
+  "priceRequired": "El precio es obligatorio.",
+  "pricePositive": "El precio debe ser un número positivo.",
+  "descriptionRequired": "La descripción es obligatoria.",
+  "descriptionLength": "La descripción debe tener entre 5 y 1000 caracteres.",
+  "stockCountRange": "La cantidad en stock debe estar entre 0 y 99999.",
+  "ratingCountPositive": "La cantidad de valoraciones debe ser un número entero positivo."
 }
